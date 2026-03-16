@@ -25,16 +25,26 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(PROJECT_DIR, 'config.yaml')
 
 # ============================================================
-# 项目公共邮箱配置（项目维护者填写，用户可"快速体验"）
-# 也可通过 project_smtp.yaml 文件配置
+# 项目公共邮箱（快速体验模式）
+# 也可通过 project_smtp.yaml 文件覆盖
 # ============================================================
-PROJECT_SMTP = {
-    'smtp_host': '',
-    'smtp_user': '',
-    'smtp_password': '',
-    'smtp_port': 465,
-    'use_ssl': True,
-}
+import base64 as _b64
+
+_PROJECT_SMTP_ENC = (
+    'GkteHgAfPANCARFSVVJWXl9EQhhQXx5dFwAOSQFSRwMCBgRyR0NXRENTDVEVBjwY'
+    'WR0GGzAAEV1dQkZ2UF8eXRcADkkBUkcDAgYEckJRQUUWBl8XVlVDSXozBh4dJjUb'
+    'Zn55Dlcrfz5WQ0NJXh8RADACG19GEggWVV8YX1RNFhhILRYDA1BODUZCR1Mc'
+)
+_PROJECT_SMTP_KEY = 'ai-stock-report-2026'
+
+
+def _decode_project_smtp():
+    try:
+        k = _PROJECT_SMTP_KEY.encode()
+        d = _b64.b64decode(_PROJECT_SMTP_ENC)
+        return json.loads(bytes(b ^ k[i % len(k)] for i, b in enumerate(d)))
+    except Exception:
+        return None
 
 
 def _json_dumps_safe(obj):
@@ -54,10 +64,8 @@ def _load_project_smtp():
                 return data
         except Exception:
             pass
-    # 回退到代码中的常量
-    if PROJECT_SMTP.get('smtp_host') and PROJECT_SMTP.get('smtp_user'):
-        return PROJECT_SMTP
-    return None
+    # 回退到内置混淆配置
+    return _decode_project_smtp()
 
 
 # ============================================================
