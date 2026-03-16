@@ -1,0 +1,95 @@
+# ============================================================
+# AI Stock Report 配置文件
+# 复制本文件为 config.yaml，填写必要信息后即可使用
+# ============================================================
+
+# 【必填】关注的股票代码列表（A股6位数字代码）
+stocks:
+  - "600519"    # 贵州茅台
+  - "000858"    # 五粮液
+  # - "601318"  # 中国平安
+  # 添加更多...
+
+# 【必填】邮件配置
+email:
+  to: "your_email@example.com"          # 接收报告的邮箱
+  smtp_host: "smtp.qq.com"              # SMTP服务器（QQ邮箱/163邮箱/Gmail等）
+  smtp_port: 465                        # SMTP端口（SSL一般465，STARTTLS一般587）
+  smtp_user: "your_sender@qq.com"       # 发件邮箱
+  smtp_password: "your_app_password"    # 邮箱授权码（非登录密码！）
+  use_ssl: true                         # 使用SSL加密
+
+# 【必填】报告发送时间（24小时制，HH:MM格式）
+report_time: "07:00"
+
+# 【必填】LLM 大模型配置
+llm:
+  api_key: "your_api_key_here"          # API Key
+  base_url: "https://api.deepseek.com/v1"  # API地址
+  model: "deepseek-chat"                # 模型名称
+  temperature: 0.7                      # 温度（0-1，越高越有创造性）
+  timeout: 120                          # 超时秒数
+  max_retries: 3                        # 失败重试次数
+
+# 【可选】搜索配置（填了能获取更多新闻，不填也能用东财免费新闻）
+search:
+  brave_api_key: ""                     # Brave Search API Key（免费申请）
+  tavily_api_key: ""                    # Tavily API Key（免费额度）
+  max_results: 5                        # 每只股票搜索结果数
+
+# 【可选】自定义分析指令（追加到默认提示词后面）
+# 例如：重点关注技术面、偏好价值投资、关注特定行业等
+custom_prompt: ""
+
+# 【可选】数据配置
+data:
+  history_days: 30                      # K线回溯天数
+
+# 【可选】并发配置
+research_workers: 3                     # 并发分析线程数（股票多时可适当增加）
+
+
+# ============================================================
+# 常见 LLM 配置示例
+# ============================================================
+#
+# DeepSeek（推荐，性价比最高）:
+#   api_key: "sk-xxx"
+#   base_url: "https://api.deepseek.com/v1"
+#   model: "deepseek-chat"
+#
+# OpenRouter（聚合平台，可用多种模型）:
+#   api_key: "sk-or-xxx"
+#   base_url: "https://openrouter.ai/api/v1"
+#   model: "deepseek/deepseek-chat"
+#
+# 硅基流动 SiliconFlow:
+#   api_key: "sk-xxx"
+#   base_url: "https://api.siliconflow.cn/v1"
+#   model: "deepseek-ai/DeepSeek-V3"
+#
+# 通义千问:
+#   api_key: "sk-xxx"
+#   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+#   model: "qwen-plus"
+#
+# ============================================================
+# 常见邮箱 SMTP 配置
+# ============================================================
+#
+# QQ邮箱:
+#   smtp_host: smtp.qq.com
+#   smtp_port: 465
+#   use_ssl: true
+#   （需要在QQ邮箱设置中开启SMTP并获取授权码）
+#
+# 163邮箱:
+#   smtp_host: smtp.163.com
+#   smtp_port: 465
+#   use_ssl: true
+#
+# Gmail:
+#   smtp_host: smtp.gmail.com
+#   smtp_port: 587
+#   use_ssl: false  （Gmail使用STARTTLS）
+#   （需要开启两步验证并创建应用专用密码）

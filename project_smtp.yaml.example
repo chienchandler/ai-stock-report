@@ -1,0 +1,9 @@
+# 项目公共邮箱配置（项目维护者填写）
+# 复制此文件为 project_smtp.yaml 并填入真实信息
+# 配置后，用户可选择"快速体验"模式，用此邮箱发送报告
+
+smtp_host: "smtp.qq.com"
+smtp_user: ""           # 项目公共发件邮箱
+smtp_password: ""       # 邮箱授权码
+smtp_port: 465
+use_ssl: true

@@ -1,0 +1,28 @@
+# 配置文件（含API密钥）
+config.yaml
+project_smtp.yaml
+.env
+
+# 数据和日志
+data/
+logs/
+.deps_installed
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
