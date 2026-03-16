@@ -31,7 +31,7 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/yourname/ai-stock-report.git
+git clone https://github.com/ChandlerChien/ai-stock-report.git
 cd ai-stock-report
 
 # 2. 一键启动（自动安装依赖 + 打开浏览器配置）
@@ -117,11 +117,11 @@ Windows 用户也可以直接双击 `start.bat`。
 
 **复制以下内容，替换 `[...]` 中的信息后发送：**
 
-> 帮我安装配置「A股持仓AI分析报告」（GitHub: https://github.com/yourname/ai-stock-report ），这是一个每天自动用AI分析A股持仓并发邮件报告的开源工具。请执行以下步骤：
+> 帮我安装配置「A股持仓AI分析报告」（GitHub: https://github.com/ChandlerChien/ai-stock-report ），这是一个每天自动用AI分析A股持仓并发邮件报告的开源工具。请执行以下步骤：
 >
 > 1. 克隆项目并安装依赖：
 > ```
-> git clone https://github.com/yourname/ai-stock-report.git
+> git clone https://github.com/ChandlerChien/ai-stock-report.git
 > cd ai-stock-report
 > pip install -r requirements.txt
 > ```

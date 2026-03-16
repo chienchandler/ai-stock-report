@@ -84,21 +84,21 @@ def parse_json_response(content):
 
     # Markdown code block
     if '```json' in content:
-        start = content.index('```json') + 7
-        end = content.index('```', start)
         try:
+            start = content.index('```json') + 7
+            end = content.index('```', start)
             return json.loads(content[start:end].strip())
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, ValueError):
             pass
 
     if '```' in content:
-        start = content.index('```') + 3
-        newline = content.index('\n', start)
-        start = newline + 1
-        end = content.index('```', start)
         try:
+            start = content.index('```') + 3
+            newline = content.index('\n', start)
+            start = newline + 1
+            end = content.index('```', start)
             return json.loads(content[start:end].strip())
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, ValueError):
             pass
 
     # Find JSON boundaries
