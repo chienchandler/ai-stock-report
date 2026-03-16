@@ -19,6 +19,21 @@ if errorlevel 1 (
 set PY=python
 
 :found
+
+:: --- Install dependencies if needed ---
+if not exist .deps_installed (
+    echo Installing dependencies...
+    %PY% -m pip install -r requirements.txt -q
+    if errorlevel 1 (
+        echo.
+        echo Failed to install dependencies. Please check your network.
+        pause
+        exit /b 1
+    )
+    echo. > .deps_installed
+    echo Done.
+)
+
 echo Opening settings page...
 %PY% -c "from web_config import run_config_server; run_config_server(open_browser=True, wait_for_save=True)"
 

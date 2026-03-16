@@ -34,9 +34,6 @@ At your scheduled time each day, the system runs its analysis and sends an HTML 
 - **Watch List** — Stocks with significant score changes are highlighted
 - **Per-Stock Analysis** — Each stock gets a card with score (-5 to +5), analysis, and risk notes
 
-<!-- Uncomment when screenshot is available -->
-<!-- <p align="center"><img src="docs/screenshot.png" width="300"></p> -->
-
 ## What Does It Actually Do?
 
 **This isn't a simple price alert.** It synthesizes multiple dimensions:
@@ -63,7 +60,7 @@ You'll need two things (~3 minutes):
 
 ### Option 1: AI Assistant Setup (Easiest)
 
-Copy this prompt to **Claude / ChatGPT / any AI coding assistant**, and it will handle the entire installation:
+Copy this prompt to **OpenClaw / Claude / ChatGPT** or any AI coding assistant, and it will handle the entire installation:
 
 > Help me install and configure "AI Stock Report" (GitHub: https://github.com/chienchandler/ai-stock-report), an open-source tool that uses AI to analyze China A-share holdings daily and sends email reports. Please clone the project, install dependencies, help me configure it, and run a test.
 

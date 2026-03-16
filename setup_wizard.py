@@ -149,6 +149,14 @@ def main():
     custom_prompt = ask("自定义指令", required=False) or ""
 
     # ---- 生成配置文件 ----
+    def _esc(s):
+        """Escape special characters for YAML double-quoted strings."""
+        return (str(s)
+                .replace('\\', '\\\\')
+                .replace('"', '\\"')
+                .replace('\n', '\\n')
+                .replace('\r', ''))
+
     stocks_yaml = "\n".join(f'  - "{c}"' for c in stock_codes)
 
     config_content = f'''# AI Stock Report 配置文件（由配置向导生成）
@@ -157,29 +165,29 @@ stocks:
 {stocks_yaml}
 
 email:
-  to: "{to_email}"
-  smtp_host: "{smtp_host}"
+  to: "{_esc(to_email)}"
+  smtp_host: "{_esc(smtp_host)}"
   smtp_port: {smtp_port}
-  smtp_user: "{smtp_user}"
-  smtp_password: "{smtp_password}"
+  smtp_user: "{_esc(smtp_user)}"
+  smtp_password: "{_esc(smtp_password)}"
   use_ssl: {"true" if use_ssl else "false"}
 
-report_time: "{report_time}"
+report_time: "{_esc(report_time)}"
 
 llm:
-  api_key: "{api_key}"
-  base_url: "{base_url}"
-  model: "{model}"
+  api_key: "{_esc(api_key)}"
+  base_url: "{_esc(base_url)}"
+  model: "{_esc(model)}"
   temperature: 0.7
   timeout: 120
   max_retries: 3
 
 search:
-  brave_api_key: "{brave_key}"
-  tavily_api_key: "{tavily_key}"
+  brave_api_key: "{_esc(brave_key)}"
+  tavily_api_key: "{_esc(tavily_key)}"
   max_results: 5
 
-custom_prompt: "{custom_prompt}"
+custom_prompt: "{_esc(custom_prompt)}"
 
 data:
   history_days: 30

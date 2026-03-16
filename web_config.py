@@ -21,8 +21,6 @@ try:
 except (AttributeError, OSError):
     pass
 
-import json as _json_mod
-
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(PROJECT_DIR, 'config.yaml')
 
@@ -40,7 +38,7 @@ PROJECT_SMTP = {
 
 
 def _json_dumps_safe(obj):
-    return _json_mod.dumps(obj, ensure_ascii=False)
+    return json.dumps(obj, ensure_ascii=False)
 
 
 def _load_project_smtp():
@@ -980,6 +978,9 @@ class ConfigHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         length = int(self.headers.get('Content-Length', 0))
+        if length > 1_000_000:
+            self.send_error(413, 'Request body too large')
+            return
         body = self.rfile.read(length).decode('utf-8')
         try:
             data = json.loads(body)
