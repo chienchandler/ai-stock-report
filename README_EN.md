@@ -74,7 +74,7 @@ Tell the AI assistant your stock codes, API key, and email info — it handles t
 
 1. Install [Python 3.10+](https://www.python.org/downloads/) (check "Add Python to PATH")
 2. [Download ZIP](../../archive/refs/heads/main.zip) and extract
-3. Double-click `start.bat` (Mac/Linux: run `./start.sh`)
+3. Double-click `start.bat` (Mac: double-click `start.command`, Linux: run `./start.sh`)
 4. Browser opens automatically — fill in the config form
 5. Click "Save & Start" — done!
 

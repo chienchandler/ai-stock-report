@@ -1,5 +1,5 @@
 #!/bin/bash
-# AI Stock Report - Mac/Linux Launcher
+# AI Stock Report - Mac Launcher (double-click to run)
 
 cd "$(dirname "$0")"
 
@@ -14,6 +14,7 @@ else
     echo "  Please install Python 3.10+"
     echo "  https://www.python.org/downloads/"
     echo "============================================"
+    read -p "Press Enter to exit..."
     exit 1
 fi
 
@@ -25,6 +26,7 @@ if [ ! -f .deps_installed ]; then
     $PY -m pip install -r requirements.txt -q
     if [ $? -ne 0 ]; then
         echo "Failed to install dependencies. Please check your network."
+        read -p "Press Enter to exit..."
         exit 1
     fi
     touch .deps_installed
@@ -35,3 +37,5 @@ fi
 echo "[2/2] Starting..."
 echo ""
 $PY app.py "$@"
+
+read -p "Press Enter to exit..."

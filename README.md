@@ -83,7 +83,7 @@
 
 1. 安装 [Python 3.10+](https://www.python.org/downloads/)（勾选 "Add Python to PATH"）
 2. [下载项目 ZIP](../../archive/refs/heads/main.zip) 并解压
-3. 双击 `start.bat`（Mac/Linux 运行 `./start.sh`）
+3. 双击 `start.bat`（Mac 双击 `start.command`，Linux 运行 `./start.sh`）
 4. 浏览器自动打开配置页面，像填表单一样填写信息
 5. 点击「保存配置并启动」— 搞定！
 
@@ -157,7 +157,7 @@ ai-stock-report/
 ├── app.py                # 主入口：定时调度 + CLI
 ├── web_config.py         # Web 配置界面
 ├── setup_wizard.py       # 命令行配置向导（备用）
-├── start.bat / start.sh  # 一键启动
+├── start.bat / start.command / start.sh  # 一键启动
 ├── config.bat / config.sh # 一键修改配置
 ├── config.yaml.example   # 配置文件模板
 ├── requirements.txt      # Python 依赖
