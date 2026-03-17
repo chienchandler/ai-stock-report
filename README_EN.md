@@ -5,7 +5,7 @@
     Automated daily analysis of your China A-share portfolio, delivered to your inbox
   </p>
   <p align="center">
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python"></a>
     <a href="https://github.com/chienchandler/ai-stock-report/stargazers"><img src="https://img.shields.io/github/stars/chienchandler/ai-stock-report.svg?style=social" alt="Stars"></a>
   </p>
@@ -211,4 +211,4 @@ If you find this useful, please consider giving the project a **Star** :)
 
 ## License
 
-[MIT](LICENSE)
+[Apache License 2.0](LICENSE)

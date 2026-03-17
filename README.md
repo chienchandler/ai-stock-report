@@ -5,7 +5,7 @@
     每天自动分析你的 A 股持仓，生成专业报告发送到邮箱
   </p>
   <p align="center">
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python"></a>
     <a href="https://github.com/chienchandler/ai-stock-report/stargazers"><img src="https://img.shields.io/github/stars/chienchandler/ai-stock-report.svg?style=social" alt="Stars"></a>
   </p>
@@ -220,4 +220,4 @@ Windows：将 start.bat 的快捷方式放入启动文件夹（Win+R 输入 <cod
 
 ## License
 
-[MIT](LICENSE)
+[Apache License 2.0](LICENSE)
