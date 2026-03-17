@@ -251,29 +251,47 @@ def _handle_quick_config(json_str):
     base_url = data.get('base_url', defaults['base_url'])
     model = data.get('model', defaults['model'])
 
-    # 邮箱配置（智能检测邮箱类型）
+    # 邮箱配置
+    email_mode = data.get('email_mode', 'self')
     email_addr = data['email']
-    smtp_password = data.get('smtp_password', '')
-    smtp_user = data.get('smtp_user', email_addr)
     to_email = data.get('to_email', email_addr)
 
-    # 根据邮箱自动推断 SMTP
-    smtp_host = data.get('smtp_host', '')
-    smtp_port = data.get('smtp_port', 465)
-    use_ssl = data.get('use_ssl', True)
-    if not smtp_host:
-        if 'qq.com' in email_addr:
-            smtp_host = 'smtp.qq.com'
-        elif '163.com' in email_addr:
-            smtp_host = 'smtp.163.com'
-        elif 'gmail.com' in email_addr:
-            smtp_host, smtp_port, use_ssl = 'smtp.gmail.com', 587, False
-        elif '126.com' in email_addr:
-            smtp_host = 'smtp.126.com'
-        elif 'outlook.com' in email_addr or 'hotmail.com' in email_addr:
-            smtp_host, smtp_port, use_ssl = 'smtp.office365.com', 587, False
-        else:
-            smtp_host = f'smtp.{email_addr.split("@")[1]}'
+    if email_mode == 'project':
+        # 快速体验模式：使用项目内置公共邮箱发送，用户只需提供收件地址
+        from web_config import _load_project_smtp
+        ps = _load_project_smtp()
+        if not ps:
+            print("❌ 项目公共邮箱不可用，请使用自主配置模式（不传 email_mode 或设为 'self'）")
+            sys.exit(1)
+        smtp_host = ps['smtp_host']
+        smtp_port = ps.get('smtp_port', 465)
+        smtp_user = ps['smtp_user']
+        smtp_password = ps['smtp_password']
+        use_ssl = ps.get('use_ssl', True)
+        # 快速体验模式下 email 就是收件地址
+        to_email = email_addr
+    else:
+        # 自主配置模式（智能检测邮箱类型）
+        smtp_password = data.get('smtp_password', '')
+        smtp_user = data.get('smtp_user', email_addr)
+
+        # 根据邮箱自动推断 SMTP
+        smtp_host = data.get('smtp_host', '')
+        smtp_port = data.get('smtp_port', 465)
+        use_ssl = data.get('use_ssl', True)
+        if not smtp_host:
+            if 'qq.com' in email_addr:
+                smtp_host = 'smtp.qq.com'
+            elif '163.com' in email_addr:
+                smtp_host = 'smtp.163.com'
+            elif 'gmail.com' in email_addr:
+                smtp_host, smtp_port, use_ssl = 'smtp.gmail.com', 587, False
+            elif '126.com' in email_addr:
+                smtp_host = 'smtp.126.com'
+            elif 'outlook.com' in email_addr or 'hotmail.com' in email_addr:
+                smtp_host, smtp_port, use_ssl = 'smtp.office365.com', 587, False
+            else:
+                smtp_host = f'smtp.{email_addr.split("@")[1]}'
 
     report_time = data.get('report_time', '07:00')
     custom_prompt = data.get('custom_prompt', '')
