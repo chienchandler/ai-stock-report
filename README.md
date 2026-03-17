@@ -79,13 +79,15 @@
 
 ### 方式二：双击启动，浏览器填表（零代码）
 
-**适合 Windows 用户，不需要写任何代码。**
+**不需要写任何代码。**
 
 1. 安装 [Python 3.10+](https://www.python.org/downloads/)（勾选 "Add Python to PATH"）
 2. [下载项目 ZIP](../../archive/refs/heads/main.zip) 并解压
 3. 双击 `start.bat`（Mac 双击 `start.command`，Linux 运行 `./start.sh`）
 4. 浏览器自动打开配置页面，像填表单一样填写信息
 5. 点击「保存配置并启动」— 搞定！
+
+> **Mac 用户提示：** 首次运行 `start.command` 如果提示"无法验证开发者"，请**右键点击 → 打开**，在弹窗中选择「打开」即可，之后双击就不会再拦截。
 
 保持命令行窗口不关，每天到设定时间就能收到邮件报告。
 

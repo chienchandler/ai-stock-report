@@ -70,13 +70,15 @@ Tell the AI assistant your stock codes, API key, and email info — it handles t
 
 ### Option 2: One-Click Start (No Coding)
 
-**For Windows users — zero code required.**
+**Zero code required.**
 
 1. Install [Python 3.10+](https://www.python.org/downloads/) (check "Add Python to PATH")
 2. [Download ZIP](../../archive/refs/heads/main.zip) and extract
 3. Double-click `start.bat` (Mac: double-click `start.command`, Linux: run `./start.sh`)
 4. Browser opens automatically — fill in the config form
 5. Click "Save & Start" — done!
+
+> **Mac users:** If macOS blocks `start.command` with an "unverified developer" warning, **right-click → Open** and confirm. It won't block again after that.
 
 Keep the terminal window open. Reports arrive at your scheduled time.
 
